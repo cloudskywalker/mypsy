@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 夜间模式淡蓝色主题 -->
+    <color name="colorPrimary">#FF64B5F6</color>
+    <color name="colorPrimaryDark">#FF1976D2</color>
+    <color name="colorAccent">#FF4FC3F7</color>
+
+    <!-- 辅助色 -->
+    <color name="colorSecondary">#FF90CAF9</color>
+    <color name="colorOnPrimary">#FFFFFFFF</color>
+    <color name="colorOnSecondary">#FF000000</color>
+
+    <!-- 消息气泡颜色 -->
+    <color name="message_sent">#FF64B5F6</color>
+    <color name="message_received">#FF1E3A5F</color>
+
+    <!-- 文本颜色 -->
+    <color name="text_primary">#DDFFFFFF</color>
+    <color name="text_secondary">#99FFFFFF</color>
+
+    <!-- 背景颜色 -->
+    <color name="background">#FF0A1929</color>
+    <color name="surface">#FF152238</color>
+</resources>

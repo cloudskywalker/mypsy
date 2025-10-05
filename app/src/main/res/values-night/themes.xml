@@ -1,0 +1,15 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Psychologist" parent="Theme.Material3.DayNight">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+
+        <!-- 夜间模式样式 -->
+        <item name="android:windowBackground">@color/night_background</item>
+        <item name="cardBackgroundColor">@color/night_surface</item>
+    </style>
+
+    <style name="Theme.Psychologist" parent="Base.Theme.Psychologist" />
+</resources>
