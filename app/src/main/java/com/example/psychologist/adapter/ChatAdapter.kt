@@ -1,5 +1,6 @@
 package com.example.psychologist.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -112,6 +113,16 @@ class ChatAdapter(
             messageText.text = message.content
             messageTime.text = DateUtils.formatMessageTime(message.timestamp)
 
+            // 根据消息长度动态调整最大宽度
+            val maxWidth = if (message.content.length > 100) {
+                // 长消息使用较大宽度
+                320.dpToPx(itemView.context)
+            } else {
+                // 短消息使用较小宽度
+                240.dpToPx(itemView.context)
+            }
+            messageText.maxWidth = maxWidth
+
             // 设置消息状态
             when (message.status) {
                 "sending" -> messageStatus.setImageResource(R.drawable.ic_sending)
@@ -123,6 +134,11 @@ class ChatAdapter(
             messageMenu.setOnClickListener {
                 showPopupMenu(it, message)
             }
+        }
+
+        // 扩展函数：dp转px
+        private fun Int.dpToPx(context: Context): Int {
+            return (this * context.resources.displayMetrics.density).toInt()
         }
 
         private fun showPopupMenu(view: View, message: Message) {
@@ -151,6 +167,7 @@ class ChatAdapter(
         private val messageTime: TextView = itemView.findViewById(R.id.text_message_time)
 
         fun bind(message: Message) {
+            // 确保文本正确换行
             messageText.text = message.content
             messageTime.text = DateUtils.formatMessageTime(message.timestamp)
         }

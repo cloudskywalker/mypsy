@@ -12,36 +12,46 @@
         android:gravity="end"
         android:orientation="horizontal">
 
+        <!-- 消息菜单按钮移到消息气泡内部 -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="12dp"
-            android:background="@drawable/bg_message_sent">
+            android:layout_marginEnd="8dp"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_message_sent"
+            android:paddingStart="12dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="12dp">
 
             <TextView
                 android:id="@+id/text_message_body"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:maxWidth="260dp"
                 android:textColor="@android:color/white"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:lineSpacingExtra="4dp" />
+
+            <ImageView
+                android:id="@+id/message_menu"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_more_vert"
+                android:contentDescription="消息菜单"
+                android:layout_gravity="center_vertical" />
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/message_menu"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="8dp"
-            android:src="@drawable/ic_more_vert"
-            android:contentDescription="消息菜单" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="end"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingTop="4dp">
 
         <TextView
             android:id="@+id/text_message_time"
@@ -56,6 +66,7 @@
             android:layout_height="16dp"
             android:layout_marginStart="4dp"
             android:contentDescription="消息状态" />
+
     </LinearLayout>
 
 </LinearLayout>
