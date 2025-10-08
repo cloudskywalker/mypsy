@@ -1,6 +1,5 @@
 package com.example.psychologist.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.*
 import com.example.psychologist.adapter.ChatAdapter
 import com.example.psychologist.database.entity.Message
@@ -11,14 +10,9 @@ import com.example.psychologist.network.ApiClient
 import com.example.psychologist.network.KimiRequest
 import com.example.psychologist.network.KimiMessage
 import com.example.psychologist.network.StreamResponse
-import com.example.psychologist.network.StreamChoice
-import com.example.psychologist.network.StreamDelta
-import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.Flow
 import okhttp3.ResponseBody
-import java.util.*
 
 class ChatViewModel(
     private val messageRepository: MessageRepository,
@@ -86,9 +80,6 @@ class ChatViewModel(
             )
             val messageId = messageRepository.insertMessage(userMessage)
             // 不要尝试重新赋值 userMessage.id，因为它是 val
-
-            // 如果需要使用带有 ID 的消息对象，可以重新查询或创建一个新对象
-            val userMessageWithId = userMessage.copy(id = messageId)
 
             // 更新对话标题（如果是第一条用户消息）
             updateConversationTitle(conversationId, content)
@@ -275,7 +266,7 @@ class ChatViewModel(
                 currentJob = viewModelScope.launch(Dispatchers.IO) {
                     try {
                         val response = ApiClient.kimiApiService.sendMessageStream(request)
-                        processStreamResponse(response, aiMessageId, conversationId)
+                        processStreamResponse(response, aiMessageId)
                     } catch (e: Exception) {
                         withContext(Dispatchers.Main) {
                             _error.value = "网络错误: ${e.message}"
@@ -305,8 +296,7 @@ class ChatViewModel(
     // 修改 processStreamResponse 方法中的更新逻辑
     private suspend fun processStreamResponse(
         response: ResponseBody,
-        messageId: Long,
-        conversationId: Long
+        messageId: Long
     ) {
         val reader = response.byteStream().bufferedReader()
         var accumulatedContent = StringBuilder()

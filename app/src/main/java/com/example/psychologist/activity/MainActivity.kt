@@ -27,7 +27,6 @@ import com.example.psychologist.viewmodel.ChatViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 import android.content.pm.PackageManager
 import androidx.appcompat.widget.SwitchCompat
-import kotlinx.coroutines.flow.first
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
