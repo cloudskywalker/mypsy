@@ -1,6 +1,7 @@
 package com.example.psychologist.adapter
 
 import android.content.Context
+import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.psychologist.R
 import com.example.psychologist.database.entity.Message
 import com.example.psychologist.util.DateUtils
+import com.example.psychologist.util.MarkdownUtils
 
 class ChatAdapter(
     private val onEditMessage: (Message) -> Unit,
@@ -167,9 +169,14 @@ class ChatAdapter(
         private val messageTime: TextView = itemView.findViewById(R.id.text_message_time)
 
         fun bind(message: Message) {
-            // 确保文本正确换行
-            messageText.text = message.content
+//            // 确保文本正确换行
+//            messageText.text = message.content
+            // 使用 Markdown 渲染 AI 消息
+            MarkdownUtils.renderMarkdown(messageText, message.content)
             messageTime.text = DateUtils.formatMessageTime(message.timestamp)
+
+            // 通过代码设置 LinkMovementMethod，使链接可点击
+            messageText.movementMethod = LinkMovementMethod.getInstance()
         }
     }
 }

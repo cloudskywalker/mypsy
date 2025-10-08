@@ -2,6 +2,7 @@ package com.example.psychologist
 
 import android.app.Application
 import com.example.psychologist.database.AppDatabase
+import com.example.psychologist.util.MarkdownUtils
 import com.example.psychologist.util.ThemeUtils
 
 class PsychologistApplication : Application() {
@@ -12,5 +13,8 @@ class PsychologistApplication : Application() {
         // 应用保存的主题
         val savedTheme = ThemeUtils.getSavedTheme(this)
         ThemeUtils.applyTheme(savedTheme)
+
+        // 初始化 Markdown 渲染
+        MarkdownUtils.initialize(this)
     }
 }

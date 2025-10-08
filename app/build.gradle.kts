@@ -104,4 +104,32 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    // Markdown 渲染核心
+    implementation("io.noties.markwon:core:4.6.2")
+    implementation("io.noties.markwon:editor:4.6.2")
+    implementation("io.noties.markwon:image:4.6.2")
+    implementation("io.noties.markwon:image-glide:4.6.2")
+    implementation("io.noties.markwon:linkify:4.6.2")
+
+    // 添加删除线支持
+    implementation("io.noties.markwon:ext-strikethrough:4.6.2")
+
+    // 添加表格支持
+    implementation("io.noties.markwon:ext-tables:4.6.2")
+
+
+
+    // 添加任务列表支持
+    implementation("io.noties.markwon:ext-tasklist:4.6.2")
+
+    // LaTeX 数学公式支持
+    implementation("io.noties.markwon:ext-latex:4.6.2")
+
+    // HTML 支持
+    implementation("io.noties.markwon:html:4.6.2")
+
+    // Glide 用于图片加载
+    implementation("com.github.bumptech.glide:glide:4.14.2")
+    kapt("com.github.bumptech.glide:compiler:4.14.2")
 }
